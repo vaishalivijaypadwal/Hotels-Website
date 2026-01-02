@@ -1,0 +1,154 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* ================= LANDING PAGE ================= */
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.landing-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ================= HEADER ================= */
+.landing-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.landing-header h1 {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.landing-subtitle {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* ================= RESORT CARDS ================= */
+.resort-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+.resort-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.resort-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= IMAGE ================= */
+.resort-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+/* ================= INFO ================= */
+.resort-info {
+  padding: 30px;
+  text-align: center;
+}
+
+.resort-info h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.resort-info p {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 26px;
+}
+
+/* ================= BUTTON ================= */
+.resort-button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.resort-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Remove link underline */
+.resort-info a {
+  text-decoration: none;
+}
+
+/* ================= FOOTER ================= */
+.landing-footer {
+  margin-top: 90px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.contact-info {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .landing-header h1 {
+    font-size: 36px;
+  }
+
+  .resort-info {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-header h1 {
+    font-size: 30px;
+  }
+
+  .landing-subtitle {
+    font-size: 16px;
+  }
+}

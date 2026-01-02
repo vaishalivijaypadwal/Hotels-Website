@@ -1,0 +1,361 @@
+/* ================= GLOBAL RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.kinara-home {
+  width: 100%;
+  color: #111827;
+}
+
+/* ================= HERO SECTION ================= */
+.kinara-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ================= CAROUSEL ================= */
+.carousel-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 80%;
+}
+
+.carousel-slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Slide overlay */
+.slide-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content {
+  text-align: center;
+  color: #ffffff;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.slide-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.slide-description {
+  font-size: 18px;
+  color: #e5e7eb;
+}
+
+/* ================= CAROUSEL CONTROLS ================= */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  border: none;
+  font-size: 32px;
+  padding: 10px 16px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 6px;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ================= INDICATORS ================= */
+.carousel-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: #ffffff;
+}
+
+/* ================= AUTO SLIDE TIMER ================= */
+.auto-slide-indicator {
+  position: absolute;
+  bottom: 70px;
+  right: 30px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.timer-progress {
+  width: 120px;
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timer-fill {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  animation-name: timer;
+  animation-timing-function: linear;
+}
+
+@keyframes timer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.pause-text {
+  opacity: 0.85;
+}
+
+/* ================= HERO CONTENT WRAPPER ================= */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.booking-bar {
+  position: absolute;
+  top: 40px;
+  left: 50%;               /* Move left edge to 50% of viewport */
+  transform: translateX(-50%); /* Shift it back by half its width */
+  width: 90vw;             /* Still 90% of viewport width */
+  background: #ffffff;
+  padding: 22px 5%;
+  border-radius: 0;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+
+
+
+.booking-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-field label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.booking-field input,
+.booking-field select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.booking-field input:focus,
+.booking-field select:focus {
+  outline: none;
+  border-color: #b91c1c;
+}
+
+.search-btn {
+  background: #b91c1c;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-btn:hover {
+  background: #991b1b;
+}
+
+/* ================= HERO TEXT ================= */
+.hero-content {
+  margin-top: 240px;
+  text-align: center;
+  color: #ffffff;
+  max-width: 850px;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #e5e7eb;
+  margin-bottom: 18px;
+}
+
+.hero-description {
+  font-size: 16px;
+  color: #d1d5db;
+  margin-bottom: 32px;
+}
+
+/* ================= HERO BUTTONS ================= */
+.hero-buttons {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: none;
+}
+
+.btn-primary {
+  background: #d97706;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #b45309;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ================= HIGHLIGHTS ================= */
+.highlights-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.highlights-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.highlight-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.highlight-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .booking-bar {
+    flex-direction: column;
+    top: 70px;
+  }
+
+  .hero-content {
+    margin-top: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .carousel-btn {
+    font-size: 24px;
+  }
+
+  .auto-slide-indicator {
+    right: 15px;
+  }
+}
