@@ -1,0 +1,276 @@
+/* ================= PAGE ================= */
+.gallery-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 30px 40px;
+  font-family: "Inter", sans-serif;
+  outline: none;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.gallery-container {
+  max-width: 1400px;   /* controls content width */
+  margin: 0 auto;      /* centers everything */
+}
+
+
+/* ================= HEADER ================= */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.gallery-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: black;
+}
+
+/* ================= CATEGORY NAV ================= */
+.gallery-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 24px;
+}
+
+.nav-btn {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #2674d3;
+  background: #ffffff;
+  color: #111827;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.nav-btn.active {
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+/* ================= IMAGE COUNT ================= */
+.image-count {
+  text-align: center;
+  margin: 20px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ================= GRID ================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 32px;
+}
+
+
+/* ================= CARD ================= */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.8);
+}
+
+/* ================= IMAGE OVERLAY ================= */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay span {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ================= NO IMAGES ================= */
+.no-images {
+  text-align: center;
+  padding: 60px 0;
+  color: #9ca3af;
+}
+
+/* ================= CAROUSEL MODAL ================= */
+.carousel-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= CAROUSEL CONTENT ================= */
+.carousel-content {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  background: transparent;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.carousel-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 34px;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= NAV ARROWS ================= */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.carousel-nav.prev {
+  left: -60px;
+}
+
+.carousel-nav.next {
+  right: -60px;
+}
+
+/* ================= MAIN IMAGE ================= */
+.carousel-image-container {
+  text-align: center;
+}
+
+.carousel-main-image {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+}
+
+/* ================= IMAGE INFO ================= */
+.image-info {
+  margin-top: 12px;
+  color: #ffffff;
+}
+
+.image-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.image-info span {
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+/* ================= IMAGE COUNTER ================= */
+.image-counter {
+  text-align: center;
+  color: #d1d5db;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* ================= THUMBNAILS ================= */
+.carousel-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.thumbnail {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.thumbnail.active {
+  border-color: #2563eb;
+}
+
+.thumbnail img {
+  height: 70px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .gallery-item img {
+    height: 300px;
+  }
+
+  .carousel-nav.prev {
+    left: -40px;
+  }
+
+  .carousel-nav.next {
+    right: -40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-page {
+    padding: 30px 16px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item img {
+    height: 240px;
+  }
+
+  .carousel-nav {
+    display: none;
+  }
+}

@@ -8,7 +8,7 @@ const RESORT_DATA = {
     name: "Kinara Resort",
     logo: "🌄",
     themeColor: "white",
-    backgroundColor:"white", 
+    backgroundColor: "white",
     secondaryColor: "white",
     navItems: [
       { path: "/kinara", label: "Home" },
@@ -16,13 +16,13 @@ const RESORT_DATA = {
       { path: "/kinara/gallery", label: "Gallery" },
       { path: "/kinara/contact", label: "Contact" }
     ],
-    description: "Luxury Mountain Resort"
+    showFooter: false
   },
   funtastico: {
     name: "Funtastico Beach Resort",
     logo: "🏖️",
     themeColor: "white",
-    backgroundColor:"white", 
+    backgroundColor: "white",
     secondaryColor: "white",
     navItems: [
       { path: "/funtastico", label: "Home" },
@@ -30,7 +30,7 @@ const RESORT_DATA = {
       { path: "/funtastico/gallery", label: "Gallery" },
       { path: "/funtastico/contact", label: "Contact" }
     ],
-    description: "Vibrant Beachfront Paradise"
+    showFooter: false
   }
 };
 
@@ -38,45 +38,36 @@ export default function ResortLayout({ resort }) {
   const resortData = RESORT_DATA[resort];
 
   return (
-    <div 
+    <div
       className="resort-layout"
-      style={{ 
+      style={{
         backgroundColor: resortData.backgroundColor,
         background: `linear-gradient(135deg, ${resortData.backgroundColor} 0%, ${resortData.secondaryColor} 100%)`
       }}
     >
-      <Navbar 
+      <Navbar
         resortName={resortData.name}
         logo={resortData.logo}
         themeColor={resortData.themeColor}
         navItems={resortData.navItems}
       />
-      
+
       <main className="resort-content">
         <Outlet />
       </main>
-      
-      <footer 
-        className="resort-footer"
-        style={{ backgroundColor: resortData.backgroundColor }}
-      >
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>{resortData.name}</h3>
-            <p>{resortData.description}</p>
+
+      {resortData.showFooter && (
+        <footer
+          className="resort-footer"
+          style={{ backgroundColor: resortData.backgroundColor }}
+        >
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>{resortData.name}</h3>
+            </div>
           </div>
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            {resortData.navItems.map((item) => (
-              <a key={item.path} href={item.path} className="footer-link">
-                {item.label}
-              </a>
-            ))}
-          </div>
-          
-        </div>
-        
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }

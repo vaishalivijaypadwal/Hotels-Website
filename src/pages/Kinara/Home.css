@@ -20,8 +20,9 @@ html, body {
 .kinara-hero {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
+  padding-top: 90px;   /* ⬅ space for navbar */
 }
 
 /* ================= CAROUSEL ================= */
@@ -29,7 +30,7 @@ html, body {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 80%;
+  height: 90%;
 }
 
 .carousel-slides {
@@ -175,10 +176,11 @@ html, body {
 
 .booking-bar {
   position: absolute;
-  top: 40px;
-  left: 50%;               /* Move left edge to 50% of viewport */
-  transform: translateX(-50%); /* Shift it back by half its width */
-  width: 90vw;             /* Still 90% of viewport width */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  height: 90px; /* Added height */
   background: #ffffff;
   padding: 22px 5%;
   border-radius: 0;
@@ -186,10 +188,8 @@ html, body {
   gap: 16px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.25);
   z-index: 10;
+  align-items: center; /* To vertically center content within the height */
 }
-
-
-
 .booking-field {
   flex: 1;
   display: flex;
@@ -220,18 +220,22 @@ html, body {
   background: #b91c1c;
   color: #ffffff;
   border: none;
-  padding: 14px 28px;
+
+  width: 190px;              /* ⬅ button width */
+  height: 45px;              /* ⬅ button height */
+
+  padding: 12px 20px 12px 20px; /* ⬅ Top Right Bottom Left */
+
   border-radius: 12px;
   font-size: 16px;
   cursor: pointer;
+
   display: flex;
   align-items: center;
+  justify-content: center;   /* center text horizontally */
   gap: 6px;
 }
 
-.search-btn:hover {
-  background: #991b1b;
-}
 
 /* ================= HERO TEXT ================= */
 .hero-content {

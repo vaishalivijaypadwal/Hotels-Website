@@ -1,6 +1,5 @@
 // src/pages/Kinara/Home.jsx
-
-          import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./Home.css";
 
 // Import your local images (make sure these files exist in your project)
@@ -12,10 +11,8 @@ import kinara5 from "../../images/kinara5.jpg";
 
 export default function KinaraHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const timerRef = useRef(null);
   
-  // Carousel images array
+  // Carousel images array with unique titles
   const carouselImages = [
     {
       id: 1,
@@ -26,8 +23,8 @@ export default function KinaraHome() {
     {
       id: 2,
       image: kinara2,
-      title: "Premium Accommodations",
-      description: "Spacious suites with breathtaking views"
+      title: "Premium Accommodations",  // Changed to unique title
+      description: "Spacious suites with breathtaking mountain views"
     },
     {
       id: 3,
@@ -49,93 +46,53 @@ export default function KinaraHome() {
     }
   ];
 
-  // Start auto slide
-  const startAutoSlide = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    
-    timerRef.current = setInterval(() => {
-      setCurrentSlide((prevSlide) => 
-        prevSlide === carouselImages.length - 1 ? 0 : prevSlide + 1
-      );
-    }, 5000); // Change slide every 5 seconds
-  };
-
-  // Stop auto slide
-  const stopAutoSlide = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  // Reset auto slide (stop and restart)
-  const resetAutoSlide = () => {
-    stopAutoSlide();
-    startAutoSlide();
-  };
-
-  // Initialize auto slide on component mount
+  // Add keyboard navigation
   useEffect(() => {
-    startAutoSlide();
-    
-    // Cleanup on unmount
-    return () => {
-      stopAutoSlide();
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
     };
-  }, []); // Empty dependency array - run once on mount
 
-  // Handle mouse enter/leave for pause on hover
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-    stopAutoSlide();
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-    startAutoSlide();
-  };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => 
       prevSlide === carouselImages.length - 1 ? 0 : prevSlide + 1
     );
-    resetAutoSlide(); // Reset timer when manually changing slide
   };
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) => 
       prevSlide === 0 ? carouselImages.length - 1 : prevSlide - 1
     );
-    resetAutoSlide(); // Reset timer when manually changing slide
   };
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
-    resetAutoSlide(); // Reset timer when clicking indicators
   };
 
   return (
-    <div className="kinara-home">
-
+    <div className="kinara-home" tabIndex={0}>
       {/* ================= HERO SECTION WITH CAROUSEL ================= */}
       <section className="kinara-hero">
-        
         {/* ===== CAROUSEL CONTAINER ===== */}
-        <div 
-          className="carousel-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="carousel-container">
           {/* ===== CAROUSEL SLIDES ===== */}
           <div 
             className="carousel-slides"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            role="listbox"
+            aria-label="Kinara Resort carousel"
           >
             {carouselImages.map((slide) => (
               <div 
                 key={slide.id} 
                 className="carousel-slide"
                 style={{ backgroundImage: `url(${slide.image})` }}
+                role="option"
+                aria-label={`${slide.title}: ${slide.description}`}
               >
                 <div className="slide-overlay">
                   <div className="slide-content">
@@ -148,50 +105,60 @@ export default function KinaraHome() {
           </div>
 
           {/* ===== CAROUSEL CONTROLS ===== */}
-          <button className="carousel-btn prev-btn" onClick={prevSlide}>
+          <button 
+            className="carousel-btn prev-btn" 
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
             ❮
           </button>
-          <button className="carousel-btn next-btn" onClick={nextSlide}>
+          <button 
+            className="carousel-btn next-btn" 
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
             ❯
           </button>
 
           {/* ===== CAROUSEL INDICATORS ===== */}
-          <div className="carousel-indicators">
+          <div className="carousel-indicators" role="tablist">
             {carouselImages.map((_, index) => (
               <button
                 key={index}
                 className={`indicator ${index === currentSlide ? 'active' : ''}`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
+                aria-selected={index === currentSlide}
+                role="tab"
               />
             ))}
           </div>
 
-          
-
-        
-          
-          
           {/* ===== BOOKING BAR ===== */}
           <div className="booking-bar">
             <div className="booking-field">
-              <label>Destination or hotel</label>
-              <input type="text" placeholder="Enter destination" defaultValue="Kinara Resort" />
+              <label htmlFor="destination">Destination or hotel</label>
+              <input 
+                id="destination"
+                type="text" 
+                placeholder="Enter destination" 
+                defaultValue="Kinara Resort" 
+              />
             </div>
 
             <div className="booking-field">
-              <label>Check-in</label>
-              <input type="date" />
+              <label htmlFor="checkin">Check-in</label>
+              <input id="checkin" type="date" />
             </div>
 
             <div className="booking-field">
-              <label>Check-out</label>
-              <input type="date" />
+              <label htmlFor="checkout">Check-out</label>
+              <input id="checkout" type="date" />
             </div>
 
             <div className="booking-field">
-              <label>Guests</label>
-              <select defaultValue="2">
+              <label htmlFor="guests">Guests</label>
+              <select id="guests" defaultValue="2">
                 <option value="1">1 Guest</option>
                 <option value="2">2 Guests</option>
                 <option value="3">3 Guests</option>
@@ -228,12 +195,8 @@ export default function KinaraHome() {
               </button>
             </div>
           </div>
-
         </div>
       </section>
-
-      
-
     </div>
   );
 }

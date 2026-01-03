@@ -1,105 +1,123 @@
-/* src/styles/navbar.css */
+/* ================= NAVBAR WRAPPER ================= */
 .navbar {
-  background: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
+  width: 100%;
+  position: sticky;
+  top: 0;
   z-index: 1000;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
+/* ================= CONTAINER ================= */
 .nav-container {
-  max-width: 1200px;
-  height:80px;
+  max-width: 1400px;
+  height: 80px;
   margin: 0 auto;
+  padding: 0 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* ================= LOGO ================= */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  transition: transform 0.3s ease;
 }
 
-
-
 .logo-icon {
-  font-size: 2rem;
+  font-size: 28px;
 }
 
 .logo-text {
-  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Georgia", serif;
 }
 
+/* ================= MENU ================= */
 .nav-menu {
   display: flex;
-  gap: 2rem;
   align-items: center;
+  gap: 18px;
 }
 
+/* ================= LINKS ================= */
 .nav-link {
-  color: rgba(0, 0, 0, 0.897);
+  color: black;
   text-decoration: none;
   padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  font-size: 16px;
   font-weight: 500;
+  border-radius: 999px;
+  transition: all 0.3s ease;
   position: relative;
 }
 
+/* Hover */
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
+/* Active link */
 .nav-link.active {
-  background: rgba(255, 255, 255, 0.2);
-  font-weight: bold;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 600;
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-}
-
+/* ================= BOOK NOW BUTTON ================= */
 .book-now-btn {
-  background: white;
-  color: #2E8B57;
+  background: #ffffff;
+  color: #1f2937;
   border: none;
-  padding: 10px 24px;
-  border-radius: 25px;
-  font-weight: bold;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.book-now-btn:hover {
+  background: #f9fafb;
+  transform: translateY(-2px);
+}
 
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 24px;
+  }
 
-/* Mobile Responsive */
+  .nav-menu {
+    gap: 10px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
-    gap: 1rem;
+    height: auto;
+    padding: 16px;
+    gap: 14px;
   }
-  
+
   .nav-menu {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
   }
-  
-  .nav-link {
-    padding: 6px 12px;
-    font-size: 0.9rem;
+
+  .book-now-btn {
+    margin-top: 6px;
   }
 }
