@@ -1,116 +1,231 @@
-/* ================= PAGE ================= */
+/* ================= BASE ================= */
 .landing-page {
+  width: 100%;
   min-height: 100vh;
-  background:#02021de1;
-  color: #ffffff;
+  background: #02021de1;
+  color: #fff;
   font-family: "Inter", sans-serif;
 }
 
-/* ================= CONTAINER ================= */
 .landing-container {
-  max-width: 1400px;
+  max-width: 1800px;
   margin: auto;
-  padding: 80px 24px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+/* ================= CAROUSEL ================= */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;                 /* 🔥 50% screen height */
+  max-height: 550px;            /* prevents too tall on big screens */
+  overflow: hidden;
+  border-radius: 0px;
+  margin-bottom: 40px;
+}
+
+.carousel {
+  height: 100%;
+  position: relative;
+}
+
+.carousel-images {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-image-container {
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= BUTTONS ================= */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ================= INDICATORS ================= */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: #9ca3af;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: #ffffff;
+}
+
+/* ================= COUNTER ================= */
+.image-counter {
+  position: absolute;
+  bottom: 14px;
+  right: 20px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* ================= TOP TAG ================= */
+.landing-container > h2 {
+  display: inline-block;
+  font-size: 32px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  padding: 20px 18px;
+  margin-bottom: 20px;
+  background: #dc2626;
+  color: #ffffff;
+  border-radius: 6px;
+  text-transform: uppercase;
 }
 
 /* ================= HEADER ================= */
-.landing-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
 .landing-header h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
-  margin-bottom: 14px;
+  line-height: 1.2;
+  margin-bottom: 18px;
 }
 
 .landing-subtitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #c7d2fe;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-  padding-top: 15px;   /* ⬅ top padding */
+  font-size: 20px;
+  line-height: 1.8;
+  font-weight: 500;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-
-
-/* ================= CARDS GRID ================= */
+/* ================= RESORT CARDS ================= */
 .resort-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 50px;
+  gap: 0;                     /* no space between cards */
+  justify-items: center;      
+  padding: 40px 20px;         /* padding around cards */
 }
 
-/* ================= CARD ================= */
+
+
 .resort-card {
-  
-  background: white;
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  color: #1f2937;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 
 
-/* ================= IMAGE ================= */
 .resort-image {
-  height: 250px;
+  height: 240px;
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-.image-overlay {
-  pointer-events: none;
-}
 
-/* ================= INFO ================= */
+
+/* Info */
 .resort-info {
-   color: black;
-  padding: 28px;
+  padding: 26px;
+  text-align: left;
 }
 
 .resort-info h2 {
-   color: black;
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color:black;
 }
 
 .resort-info p {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.911);
-  margin-bottom: 22px;
+  color:rgba(0, 0, 0, 0.815);;
+  margin-bottom: 20px;
 }
 
-/* ================= BUTTON ================= */
+/* Button */
 .resort-button {
-  padding: 8px 26px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  color: black;
+  padding: 10px 22px;
+  font-size: 18px;
+  color: #ffffff;
   border: 2px solid;
+  border-radius: 8px;
   cursor: pointer;
-  background: transparent;
   transition: all 0.3s ease;
 }
 
-
-
-
+.resort-button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+  .carousel-container {
+    height: 35vh;
+  }
+
   .landing-header h1 {
     font-size: 32px;
   }
 
-  .resort-image {
-    height: 200px;
+  .landing-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 28vh;
+  }
+
+  .landing-header h1 {
+    font-size: 26px;
   }
 }

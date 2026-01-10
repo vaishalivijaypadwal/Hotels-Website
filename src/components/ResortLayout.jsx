@@ -14,7 +14,8 @@ const RESORT_DATA = {
       { path: "/kinara", label: "Home" },
       { path: "/kinara/about", label: "About" },
       { path: "/kinara/gallery", label: "Gallery" },
-      { path: "/kinara/contact", label: "Contact" }
+      { path: "/kinara/contact", label: "Contact" },
+      { path: "/kinara/booking", label: "Booking" }
     ],
     showFooter: false
   },
@@ -28,7 +29,8 @@ const RESORT_DATA = {
       { path: "/funtastico", label: "Home" },
       { path: "/funtastico/about", label: "About" },
       { path: "/funtastico/gallery", label: "Gallery" },
-      { path: "/funtastico/contact", label: "Contact" }
+      { path: "/funtastico/contact", label: "Contact" },
+      { path: "/kinara/booking", label: "Booking" }
     ],
     showFooter: false
   }

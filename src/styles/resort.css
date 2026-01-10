@@ -9,21 +9,21 @@
 
 .resort-content {
   flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 0rem;
+  max-width: 2000px;
   margin: 0 auto;
   width: 100%;
 }
 
 .resort-home {
   background: rgba(255, 255, 255, 0.1);
+  max-width: 1800px;
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 0rem 3rem 3rem 3rem; /* Top padding removed, keep other sides */
   margin-top: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .hero-section {
   text-align: center;
   margin-bottom: 3rem;
@@ -38,7 +38,7 @@
   color: white;
   margin-bottom: 1rem;
   background: linear-gradient(45deg, #fff, #b0e0e6);
-  -webkit-background-clip: text;
+ 
   -webkit-text-fill-color: transparent;
 }
 
@@ -99,13 +99,13 @@
 
 .resort-footer {
   background: rgba(0, 0, 0, 0.3);
-  padding: 3rem 2rem 1rem;
+  padding: 2rem 2rem 1rem;
   margin-top: 4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -159,8 +159,8 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 2.5rem;
-  margin-top: 2rem;
+  padding: 0rem;
+  margin-top: rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -174,7 +174,7 @@
 .gallery-item {
   border-radius: 10px;
   overflow: hidden;
-  height: 200px;
+  height: 300px;
 }
 
 .gallery-item img {
@@ -193,7 +193,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 600px;
+  max-width: 300px;
+   height: 414px;
+   
   margin: 2rem auto;
 }
 

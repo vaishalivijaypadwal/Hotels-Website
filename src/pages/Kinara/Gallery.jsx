@@ -1,5 +1,15 @@
 // src/pages/Gallery.jsx
 import { useState } from "react";
+import Layout from '../../components/Layout';
+import { 
+  FaMapMarkerAlt, 
+  FaPhoneAlt, 
+  FaEnvelope, 
+  FaFacebookF, 
+  FaInstagram, 
+  FaTwitter,
+  FaWhatsapp 
+} from "react-icons/fa";
 import "./Gallery.css";
 
 // Rooms
@@ -9,9 +19,9 @@ import room3 from "../../images/room3.jpg";
 import room4 from "../../images/room4.jpg";
 import room5 from "../../images/room5.jpg";
 
-// Bathrooms
-import bathroom1 from "../../images/bathroom1.jpg";
-import bathroom2 from "../../images/bathroom2.jpg";
+// Washrooms
+import washroom1 from "../../images/washroom1.jpg";
+import washroom2 from "../../images/washroom2.jpg";
 
 // Reception
 import reception1 from "../../images/reception1.jpg";
@@ -41,11 +51,61 @@ import restaurant2 from "../../images/restaurant2.jpg";
 // Amenities
 import amenities1 from "../../images/amenities1.jpg";
 
+// Reusable SocialIcons component
+const SocialIcons = () => {
+  const [activeIcon, setActiveIcon] = useState(null);
+
+  const socialLinks = [
+    {
+      name: "Facebook",
+      icon: <FaFacebookF />,
+      url: "https://facebook.com",
+      color: "#1877F2"
+    },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      url: "https://instagram.com",
+      color: "#E4405F"
+    },
+    {
+      name: "Twitter",
+      icon: <FaTwitter />,
+      url: "https://twitter.com",
+      color: "#1DA1F2"
+    },
+    {
+      name: "WhatsApp",
+      icon: <FaWhatsapp />,
+      url: "https://wa.me/919665514055",
+      color: "#25D366"
+    }
+  ];
+
+  return (
+    <div className="social-icons">
+      {socialLinks.map((social, index) => (
+        <a
+          key={index}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon"
+          style={{ color: social.color }}
+          onMouseEnter={() => setActiveIcon(index)}
+          onMouseLeave={() => setActiveIcon(null)}
+        >
+          {social.icon}
+        </a>
+      ))}
+    </div>
+  );
+};
 
 const categories = [
   "All",
   "Rooms",
-  "Bathrooms",
+  "Washrooms",
   "Reception",
   "Dining",
   "Food Court",
@@ -57,14 +117,13 @@ const categories = [
 // Organize images by category
 const categoryImages = {
   "All": [
-    
     { id: 7, src: room1, alt: "Room 1" },
     { id: 8, src: room2, alt: "Room 2" },
     { id: 9, src: room3, alt: "Room 3" },
     { id: 10, src: room4, alt: "Room 4" },
     { id: 11, src: room5, alt: "Room 5" },
-    { id: 12, src: bathroom1, alt: "Bathroom 1" },
-    { id: 13, src: bathroom2, alt: "Bathroom 2" },
+    { id: 12, src: washroom1, alt: "Washroom 1" },
+    { id: 13, src: washroom2, alt: "Washroom 2" },
     { id: 14, src: reception1, alt: "Reception 1" },
     { id: 15, src: reception2, alt: "Reception 2" },
     { id: 16, src: dining1, alt: "Dining Area 1" },
@@ -81,7 +140,6 @@ const categoryImages = {
     { id: 27, src: restaurant1, alt: "Restaurant 1" },
     { id: 28, src: restaurant2, alt: "Restaurant 2" },
     { id: 29, src: amenities1, alt: "Amenities 1" },
-    
   ],
   
   "Rooms": [
@@ -91,9 +149,9 @@ const categoryImages = {
     { id: 4, src: room4, alt: "Room 4" },
     { id: 5, src: room5, alt: "Room 5" },
   ],
-  "Bathrooms": [
-    { id: 1, src: bathroom1, alt: "Bathroom 1" },
-    { id: 2, src: bathroom2, alt: "Bathroom 2" },
+  "Washrooms": [
+    { id: 1, src: washroom1, alt: "Washroom 1" },
+    { id: 2, src: washroom2, alt: "Washroom 2" },
   ],
   "Reception": [
     { id: 1, src: reception1, alt: "Reception 1" },
@@ -122,11 +180,8 @@ const categoryImages = {
   ],
   "Amenities": [
     { id: 1, src: amenities1, alt: "Amenities 1" },
-    
   ]
 };
-
-
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -274,6 +329,7 @@ export default function Gallery() {
           </div>
         )}
       </div>
-    </div>
+      
+      </div>
   );
 }
