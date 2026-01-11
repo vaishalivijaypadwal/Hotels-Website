@@ -73,167 +73,168 @@ const ContactPage = () => {
     alert("Message sent successfully!");
   };
 
+  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <div className="contact-page">
-      {/* REACH SECTION */}
-      <section className="reach-section">
-        <p className="reach-subtitle">PLEASE REACH OUT TO US</p>
-        <p className="reach-description">
-          In case you have any query about our Resort (Funtastico Beach Resort),
-          or want to enquire about room availability, or anything else,
-          please feel free to reach out. You can call us, email, or use the form below.
-        </p>
+    <Layout>
+      <div className="contact-page">
+        {/* REACH SECTION */}
+        <section className="reach-section">
+          <p className="reach-subtitle">PLEASE REACH OUT TO US</p>
+          <p className="reach-description">
+            In case you have any query about our Resort (Funtastico Beach Resort),
+            or want to enquire about room availability, or anything else,
+            please feel free to reach out. You can call us, email, or use the form below.
+          </p>
 
-        <div className="reach-cards">
-          <div className="reach-card">
-            <div className="icon-wrapper" style={{ backgroundColor: '#ff6b6b' }}>
-              <FaMapMarkerAlt className="icon" style={{ color: '#fff' }} />
+          <div className="reach-cards">
+            <div className="reach-card">
+              <div className="icon-wrapper" style={{ backgroundColor: '#ff6b6b' }}>
+                <FaMapMarkerAlt className="icon" style={{ color: '#fff' }} />
+              </div>
+              <h3>Address</h3>
+              <p>Devbag Road, Tarkarli, Maharashtra 416606</p>
             </div>
-            <h3>Address</h3>
-            <p>Devbag Road, Tarkarli, Maharashtra 416606</p>
-          </div>
 
-          <div className="reach-card">
-            <div className="icon-wrapper" style={{ backgroundColor: '#2dce1f' }}>
-              <FaPhoneAlt className="icon" style={{ color: '#fff' }} />
-            </div>
-            <h3>Phone</h3>
-            <a href="tel:+9109665514055" className="contact-link">
-              +91 09665514055
-            </a>
-            
-          </div>
-
-          <div className="reach-card">
-            <div className="icon-wrapper" style={{ backgroundColor: '#ffe66d' }}>
-              <FaEnvelope className="icon" style={{ color: '#1a1a1a' }} />
-            </div>
-            <h3>Email</h3>
-            <a href="mailto:KinaraResort@gmail.com" className="contact-link">
-              FuntasticoResort@gmail.com
-            </a>
-           
-          </div>
-
-          <div className="reach-card">
-            <div className="icon-wrapper" style={{ backgroundColor: '#9b59b6' }}>
-              <FaClock className="icon" style={{ color: '#fff' }} />
-            </div>
-            <h3>Hours</h3>
-            <p className="hours-detail">Check-in: 12:00 PM</p>
-            <p className="hours-detail">Check-out: 10:00 AM</p>
-          </div>
-        </div>
-      </section>
-
-      {/* MAP + FORM SECTION */}
-      <div className="contact-map-section">
-        <div className="map-form-section">
-          {/* MAP SECTION */}
-          <div className="map-container">
-            <div className="map-header">
+            <div className="reach-card">
+              <div className="icon-wrapper" style={{ backgroundColor: '#2dce1f' }}>
+                <FaPhoneAlt className="icon" style={{ color: '#fff' }} />
+              </div>
+              <h3>Phone</h3>
+              <a href="tel:+9109665514055" className="contact-link">
+                +91 09665514055
+              </a>
               
             </div>
-            <iframe
-              src={embedUrl}
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Google Maps - Kinara Resort"
-              className="map-iframe"
-            />
-            <div className="map-actions">
-              <a 
-                href="https://maps.google.com/?q=Malvan-Tarkarli+Road,+Vayari,+Bhutnath,+Malvan,+Maharashtra+416606" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="get-directions-btn"
-              >
-                Get Directions
+
+            <div className="reach-card">
+              <div className="icon-wrapper" style={{ backgroundColor: '#ffe66d' }}>
+                <FaEnvelope className="icon" style={{ color: '#1a1a1a' }} />
+              </div>
+              <h3>Email</h3>
+              <a href="mailto:KinaraResort@gmail.com" className="contact-link">
+                FuntasticoResort@gmail.com
               </a>
+            
+            </div>
+
+            <div className="reach-card">
+              <div className="icon-wrapper" style={{ backgroundColor: '#9b59b6' }}>
+                <FaClock className="icon" style={{ color: '#fff' }} />
+              </div>
+              <h3>Hours</h3>
+              <p className="hours-detail">Check-in: 12:00 PM</p>
+              <p className="hours-detail">Check-out: 10:00 AM</p>
             </div>
           </div>
+        </section>
 
-          {/* CONTACT FORM */}
-          <div className="contact-form-section">
-            <div className="form-header">
-              <h3>Contact Form</h3>
-             
+        {/* MAP + FORM SECTION */}
+        <div className="contact-map-section">
+          <div className="map-form-section">
+            {/* MAP SECTION */}
+            <div className="map-container">
+              <div className="map-header">
+                
+              </div>
+              <iframe
+                src={embedUrl}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps - Funtastico Beach Resort"
+                className="map-iframe"
+              />
+              <div className="map-actions">
+                <a 
+                  href="https://maps.google.com/?q=Funtastico+Beach+Resort+Devbag+Road+Tarkarli" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="get-directions-btn"
+                >
+                  Get Directions
+                </a>
+              </div>
             </div>
-            
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Name *</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name"
-                    placeholder="Enter your full name" 
-                    required 
-                  />
+
+            {/* CONTACT FORM */}
+            <div className="contact-form-section">
+              <div className="form-header">
+                <h3>Contact Form</h3>
+                
+              </div>
+              
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Name *</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      name="name"
+                      placeholder="Enter your full name" 
+                      required 
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Email *</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email"
+                      placeholder="Enter your email" 
+                      required 
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone</label>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone"
+                      placeholder="Enter your phone number" 
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="subject">Subject</label>
+                    <input 
+                      type="text" 
+                      id="subject" 
+                      name="subject"
+                      placeholder="What is this regarding?" 
+                    />
+                  </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email *</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email"
-                    placeholder="Enter your email" 
-                    required 
-                  />
-                </div>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="phone">Phone</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone"
-                    placeholder="Enter your phone number" 
-                  />
+                  <label htmlFor="message">Message *</label>
+                  <textarea 
+                    id="message" 
+                    name="message"
+                    placeholder="Please provide details about your inquiry..." 
+                    rows="1" 
+                    required
+                  ></textarea>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <input 
-                    type="text" 
-                    id="subject" 
-                    name="subject"
-                    placeholder="What is this regarding?" 
-                  />
+                <div className="form-footer">
+                  <button type="submit" className="send-btn">
+                    Send Message
+                  </button>
                 </div>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message *</label>
-                <textarea 
-                  id="message" 
-                  name="message"
-                  placeholder="Please provide details about your inquiry..." 
-                  rows="1" 
-                  required
-                ></textarea>
-              </div>
-
-              <div className="form-footer">
-                <button type="submit" className="send-btn">
-                  Send Message
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-
-      
-    </div>
+    </Layout>
   );
 };
 

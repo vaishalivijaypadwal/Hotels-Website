@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Layout from '../../components/Layout'; // ADD THIS IMPORT
 import { 
   FaWhatsapp, 
   FaPhoneAlt, 
@@ -63,17 +64,17 @@ export default function FantasticoHome() {
     {
       id: 4,
       image: funtastico4,
-      
+     
     },
     {
       id: 5,
       image: funtastico5,
-      
+    
     },
     {
       id: 6,
       image: funtastico6,
-      
+     
     }
   ];
 
@@ -144,314 +145,318 @@ export default function FantasticoHome() {
     });
   };
 
+  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <div className="funtastico-home" tabIndex={0}>
-      {/* ================= HERO SECTION WITH CAROUSEL ================= */}
-      <section className="funtastico-hero">
-        {/* ===== CAROUSEL CONTAINER ===== */}
-        <div className="carousel-container">
-          {/* ===== CAROUSEL SLIDES ===== */}
-          <div 
-            className="carousel-slides"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            role="listbox"
-            aria-label="Funtastico Beach Resort carousel"
-          >
-            {carouselImages.map((slide) => (
-              <div 
-                key={slide.id} 
-                className="carousel-slide"
-                style={{ backgroundImage: `url(${slide.image})` }}
-                role="option"
-                aria-label={`${slide.title}: ${slide.description}`}
-              >
-                <div className="slide-overlay">
-                  <div className="slide-content">
-                    <h2 className="slide-title">{slide.title}</h2>
-                    <p className="slide-description">{slide.description}</p>
+    <Layout>
+      <div className="funtastico-home" tabIndex={0}>
+        {/* ================= HERO SECTION WITH CAROUSEL ================= */}
+        <section className="funtastico-hero">
+          {/* ===== CAROUSEL CONTAINER ===== */}
+          <div className="carousel-container">
+            {/* ===== CAROUSEL SLIDES ===== */}
+            <div 
+              className="carousel-slides"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              role="listbox"
+              aria-label="Funtastico Beach Resort carousel"
+            >
+              {carouselImages.map((slide) => (
+                <div 
+                  key={slide.id} 
+                  className="carousel-slide"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                  role="option"
+                  aria-label={`${slide.title}: ${slide.description}`}
+                >
+                  <div className="slide-overlay">
+                    <div className="slide-content">
+                      <h2 className="slide-title">{slide.title}</h2>
+                      <p className="slide-description">{slide.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ===== CAROUSEL CONTROLS ===== */}
-          <button 
-            className="carousel-btn prev-btn" 
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            ❮
-          </button>
-          <button 
-            className="carousel-btn next-btn" 
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            ❯
-          </button>
-
-          {/* ===== CAROUSEL INDICATORS ===== */}
-          <div className="carousel-indicators" role="tablist">
-            {carouselImages.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-                aria-selected={index === currentSlide}
-                role="tab"
-              />
-            ))}
-          </div>
-
-          {/* ===== HERO CONTENT ===== */}
-          <div className="hero-content">
-            <h1>Funtastico Beach Resort</h1>
-            <p>
-              Where the ocean meets excitement.  
-              Enjoy sun-soaked beaches, thrilling activities,  
-              and unforgettable seaside experiences at Funtastico.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= ABOUT SECTION ================= */}
-      <section className="about-section">
-        <h2>About Us</h2>
-        <div className="about-container">
-          {/* LEFT IMAGE */}
-          <div className="about-image">
-            <img src={about3} alt="Funtastico Beach Resort" />
-          </div>
-
-          {/* RIGHT CONTENT */}
-          <div className="about-text">
-            <p>
-              Welcome to <strong>Funtastico Beach Resort</strong>, your premier beachfront 
-              destination nestled along the pristine Konkan coastline of Maharashtra. 
-              Located right on the golden sands of Malvan beach, we offer an 
-              unforgettable blend of luxury, comfort, and authentic coastal experiences.
-            </p>
-            <p>
-              Whether you're seeking adventure, relaxation, or cultural 
-              exploration, Funtastico Beach Resort serves as your perfect gateway to the 
-              Konkan coast's natural and historical treasures.
-            </p>
-            <p>
-              Perfect for couples, families, and adventure seekers, we invite you to 
-              experience the magic of coastal living at Funtastico Beach Resort - 
-              where every moment becomes a cherished memory.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FACILITIES SECTION ================= */}
-      <section className="facilities-section">
-        <div className="section-header">
-          <h2>Facilities</h2>
-          
-        </div>
-        <div className="facilities-grid">
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} />
+              ))}
             </div>
-            <h3>Free Wi-Fi</h3>
-           
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} />
+
+            {/* ===== CAROUSEL CONTROLS ===== */}
+            <button 
+              className="carousel-btn prev-btn" 
+              onClick={prevSlide}
+              aria-label="Previous slide"
+            >
+              ❮
+            </button>
+            <button 
+              className="carousel-btn next-btn" 
+              onClick={nextSlide}
+              aria-label="Next slide"
+            >
+              ❯
+            </button>
+
+            {/* ===== CAROUSEL INDICATORS ===== */}
+            <div className="carousel-indicators" role="tablist">
+              {carouselImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  aria-selected={index === currentSlide}
+                  role="tab"
+                />
+              ))}
             </div>
-            <h3>Newspaper</h3>
+
+            {/* ===== HERO CONTENT ===== */}
+            <div className="hero-content">
+              <h1>Funtastico Beach Resort</h1>
+              <p>
+                Where the ocean meets excitement.  
+                Enjoy sun-soaked beaches, thrilling activities,  
+                and unforgettable seaside experiences at Funtastico.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= ABOUT SECTION ================= */}
+        <section className="about-section">
+          <h2>About Us</h2>
+          <div className="about-container">
+            {/* LEFT IMAGE */}
+            <div className="about-image">
+              <img src={about3} alt="Funtastico Beach Resort" />
+            </div>
+
+            {/* RIGHT CONTENT */}
+            <div className="about-text">
+              <p>
+                Welcome to <strong>Funtastico Beach Resort</strong>, your premier beachfront 
+                destination nestled along the pristine Konkan coastline of Maharashtra. 
+                Located right on the golden sands of Malvan beach, we offer an 
+                unforgettable blend of luxury, comfort, and authentic coastal experiences.
+              </p>
+              <p>
+                Whether you're seeking adventure, relaxation, or cultural 
+                exploration, Funtastico Beach Resort serves as your perfect gateway to the 
+                Konkan coast's natural and historical treasures.
+              </p>
+              <p>
+                Perfect for couples, families, and adventure seekers, we invite you to 
+                experience the magic of coastal living at Funtastico Beach Resort - 
+                where every moment becomes a cherished memory.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= FACILITIES SECTION ================= */}
+        <section className="facilities-section">
+          <div className="section-header">
+            <h2>Facilities</h2>
             
           </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} />
+          <div className="facilities-grid">
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} />
+              </div>
+              <h3>Free Wi-Fi</h3>
+            
             </div>
-            <h3>Air Conditioning</h3>
-          
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} />
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} />
+              </div>
+              <h3>Newspaper</h3>
+              
             </div>
-            <h3>Housekeeping</h3>
-           
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaCar style={{ fontSize: '30px', color: '#10B981' }} />
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} />
+              </div>
+              <h3>Air Conditioning</h3>
+            
             </div>
-            <h3>Free Parking</h3>
-           
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} />
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} />
+              </div>
+              <h3>Housekeeping</h3>
+            
             </div>
-            <h3>Room Service</h3>
-           
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} />
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaCar style={{ fontSize: '30px', color: '#10B981' }} />
+              </div>
+              <h3>Free Parking</h3>
+            
             </div>
-            <h3>Power Backup</h3>
-           
-          </div>
-          
-          <div className="facility-card">
-            <div className="facility-icon">
-              <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} />
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} />
+              </div>
+              <h3>Room Service</h3>
+            
             </div>
-            <h3>Umbrellas</h3>
-           
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} />
+              </div>
+              <h3>Power Backup</h3>
+            
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} />
+              </div>
+              <h3>Umbrellas</h3>
+            
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-{/* ================= GALLERY SECTION ================= */}
-      <section className="gallery-section">
-        <h2>Gallery</h2>
-        <div className="gallery-grid">
-          <div className="gallery-item">
-            <img src={room9} alt="Luxury Room - Funtastico Beach Resort" />
+        {/* ================= GALLERY SECTION ================= */}
+        <section className="gallery-section">
+          <h2>Gallery</h2>
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <img src={room9} alt="Luxury Room - Funtastico Beach Resort" />
+            </div>
+            <div className="gallery-item">
+              <img src={entrance} alt="Resort Entrance - Funtastico Beach Resort" />
+            </div>
+            <div className="gallery-item">
+              <img src={outdoor11} alt="Outdoor View - Funtastico Beach Resort" />
+            </div>
           </div>
-          <div className="gallery-item">
-            <img src={entrance} alt="Resort Entrance - Funtastico Beach Resort" />
-          </div>
-          <div className="gallery-item">
-            <img src={outdoor11} alt="Outdoor View - Funtastico Beach Resort" />
-          </div>
-        </div>
-      </section>
-      {/* ================= CONTACT SECTION ================= */}
-      <section className="contact-section">
-        <h2>Contact & Inquiries</h2>
-        <div className="contact-container">
-          {/* Inquiry Form */}
-          <div className="inquiry-form-container">
-            <form onSubmit={handleWhatsAppSubmit} className="inquiry-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <label>
-                    <FaUser className="input-icon" /> Full Name 
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    required
-                  />
+        </section>
+        
+        {/* ================= CONTACT SECTION ================= */}
+        <section className="contact-section">
+          <h2>Contact & Inquiries</h2>
+          <div className="contact-container">
+            {/* Inquiry Form */}
+            <div className="inquiry-form-container">
+              <form onSubmit={handleWhatsAppSubmit} className="inquiry-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>
+                      <FaUser className="input-icon" /> Full Name 
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>
+                      <FaPhoneAlt className="input-icon" /> Phone Number 
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Your WhatsApp number"
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
                   <label>
-                    <FaPhoneAlt className="input-icon" /> Phone Number 
+                    <FaEnvelope className="input-icon" /> Email Address
                   </label>
                   <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
-                    placeholder="Your WhatsApp number"
-                    required
+                    placeholder="Your email address"
                   />
                 </div>
-              </div>
-              
-              <div className="form-group">
-                <label>
-                  <FaEnvelope className="input-icon" /> Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your email address"
-                />
-              </div>
-              
-              <div className="form-row">
-                <div className="form-group">
-                  <label>
-                    <FaCalendarAlt className="input-icon" /> Check-in Date 
-                  </label>
-                  <input
-                    type="date"
-                    name="checkIn"
-                    value={formData.checkIn}
-                    onChange={handleChange}
-                    required
-                  />
+                
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>
+                      <FaCalendarAlt className="input-icon" /> Check-in Date 
+                    </label>
+                    <input
+                      type="date"
+                      name="checkIn"
+                      value={formData.checkIn}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>
+                      <FaCalendarAlt className="input-icon" /> Check-out Date 
+                    </label>
+                    <input
+                      type="date"
+                      name="checkOut"
+                      value={formData.checkOut}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
                   <label>
-                    <FaCalendarAlt className="input-icon" /> Check-out Date 
+                    <FaUsers className="input-icon" /> Number of Guests 
                   </label>
-                  <input
-                    type="date"
-                    name="checkOut"
-                    value={formData.checkOut}
+                  <select
+                    name="guests"
+                    value={formData.guests}
                     onChange={handleChange}
                     required
-                  />
+                  >
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5">5 Guests</option>
+                    <option value="6">6 Guests</option>
+                    <option value="7">7+ Guests</option>
+                  </select>
                 </div>
-              </div>
-              
-              <div className="form-group">
-                <label>
-                  <FaUsers className="input-icon" /> Number of Guests 
-                </label>
-                <select
-                  name="guests"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="1">1 Guest</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5">5 Guests</option>
-                  <option value="6">6 Guests</option>
-                  <option value="7">7+ Guests</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label>Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Room preferences, special requests, or questions..."
-                  rows="1"
-                ></textarea>
-              </div>
-              
-              <button type="submit" className="whatsapp-submit-btn">
-                <FaWhatsapp /> Send on WhatsApp
-              </button>
-            </form>
+                
+                <div className="form-group">
+                  <label>Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Room preferences, special requests, or questions..."
+                    rows="1"
+                  ></textarea>
+                </div>
+                
+                <button type="submit" className="whatsapp-submit-btn">
+                  <FaWhatsapp /> Send on WhatsApp
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Layout>
   );
 }

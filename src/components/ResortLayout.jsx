@@ -6,7 +6,7 @@ import "../styles/resort.css";
 const RESORT_DATA = {
   kinara: {
     name: "Kinara Resort",
-    logo: "🌄",
+    logo: "",
     themeColor: "white",
     backgroundColor: "white",
     secondaryColor: "white",
@@ -21,7 +21,7 @@ const RESORT_DATA = {
   },
   funtastico: {
     name: "Funtastico Beach Resort",
-    logo: "🏖️",
+    logo: "",
     themeColor: "white",
     backgroundColor: "white",
     secondaryColor: "white",

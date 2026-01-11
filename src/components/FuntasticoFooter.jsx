@@ -16,104 +16,108 @@ import {
 } from "react-icons/fa";
 
 const FuntasticoFooter = () => {
+  // SocialIcons component for reuse
+  const SocialIcons = () => {
+    const socialLinks = [
+      { icon: <FaFacebookF />, url: "https://facebook.com/funtasticoresort", color: "#1877F2" },
+      { icon: <FaInstagram />, url: "https://instagram.com/funtasticoresort", color: "#E4405F" },
+      { icon: <FaTwitter />, url: "https://twitter.com/funtasticoresort", color: "#1DA1F2" },
+      { icon: <FaWhatsapp />, url: "https://wa.me/918956770162", color: "#25D366" }
+    ];
+
+    return (
+      <div className="social-icons">
+        {socialLinks.map((social, index) => (
+          <a
+            key={index}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+            style={{ color: social.color }}
+          >
+            {social.icon}
+          </a>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <footer className="funtastico-footer">
-      <div className="footer-top">
-        <div className="footer-content">
-          {/* CONTACT INFO */}
-          <div className="footer-section contact-info">
+    <footer className="contact-footer">
+      {/* FOOTER SECTION WITH CONTACT INFO */}
+      <div className="footer-content">
+        {/* CONTACT INFO CARD */}
+        <div className="contact-info-card">
+          <div className="contact-left">
             <div className="resort-header">
-              <FaUmbrellaBeach className="resort-icon" />
-              <h3>Funtastico Beach Resort</h3>
+             
+              <h2>Contact Us</h2>
             </div>
-            <ul className="contact-list">
+
+            <ul className="contact-info-list">
               <li>
                 <FaEnvelope className="footer-icon" />
                 <a href="mailto:FuntasticoResort@gmail.com">FuntasticoResort@gmail.com</a>
               </li>
               <li>
                 <FaPhoneAlt className="footer-icon" />
-                <a href="tel:+08956770162">+08956770162</a>
-                <span className="phone-separator">|</span>
-                <a href="tel:+919665514055">+91 9665514055</a>
+                <div className="phone-numbers">
+                  <a href="tel:+919665514055">+91 9665514055</a>
+                 
+                </div>
               </li>
               <li>
                 <FaMapMarkerAlt className="footer-icon" />
                 <span>Devbag Road, Tarkarli, Malvan, Maharashtra 416606</span>
               </li>
             </ul>
-          </div>
-
-          {/* QUICK LINKS */}
-          <div className="footer-section quick-links">
-            <h4>Explore</h4>
-            <ul>
-              <li><a href="/funtastico">Home</a></li>
-              <li><a href="/funtastico/about">About Us</a></li>
-              <li><a href="/funtastico/gallery">Gallery</a></li>
-              <li><a href="/funtastico/contact">Contact</a></li>
-              <li><a href="/funtastico/booking">Book Now</a></li>
-            </ul>
-          </div>
-
-          {/* WATER ACTIVITIES */}
-          <div className="footer-section activities">
-            <h4>Beach Activities</h4>
-            <div className="activities-list">
-              <div className="activity-item">
-                <FaWater className="activity-icon" />
-                <span>Water Sports</span>
-              </div>
-              <div className="activity-item">
-                <FaFish className="activity-icon" />
-                <span>Fishing Trips</span>
-              </div>
-              <div className="activity-item">
-                <FaSwimmer className="activity-icon" />
-                <span>Swimming Pool</span>
-              </div>
-            </div>
-          </div>
-
-          {/* SOCIAL & BOOKING */}
-          <div className="footer-section social-booking">
-            <h4>Stay Connected</h4>
-            <div className="social-icons">
-              <a href="https://facebook.com/funtasticoresort" className="social-icon facebook">
-                <FaFacebookF />
-              </a>
-              <a href="https://instagram.com/funtasticoresort" className="social-icon instagram">
-                <FaInstagram />
-              </a>
-              <a href="https://twitter.com/funtasticoresort" className="social-icon twitter">
-                <FaTwitter />
-              </a>
-              <a href="https://wa.me/918956770162" className="social-icon whatsapp">
-                <FaWhatsapp />
-              </a>
-            </div>
-            <div className="booking-cta">
-              <a href="/funtastico/booking" className="book-now-btn">
-                Book Your Beach Stay
-              </a>
+            
+            <div className="social-section">
+              <h4>Connect With Us</h4>
+              <br />
+              <SocialIcons />
             </div>
           </div>
         </div>
-      </div>
+
+        {/* QUICK LINKS */}
+        <div className="footer-quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="/funtastico">Home</a>
+            </li>
+            <li>
+              <a href="/funtastico/about">About Us</a>
+            </li>
+            <li>
+              <a href="/funtastico/gallery">Gallery</a>
+            </li>
+            <li>
+              <a href="/funtastico/contact">Contact</a>
+            </li>
+            <li>
+              <a href="/funtastico/booking">Book Now</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* DEVELOPER CREDIT */}
+        <div className="footer-newsletter">
+          <h3>Developed By</h3>
+          <p>KA IT Solutions</p>
+        </div>
+      </div> {/* Closing div for .footer-content */}
 
       <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <p>&copy; {new Date().getFullYear()} Funtastico Beach Resort. All rights reserved.</p>
-          <div className="footer-legal">
-            <a href="/privacy">Privacy Policy</a>
-            <span className="separator">|</span>
-            <a href="/terms">Terms of Service</a>
-            <span className="separator">|</span>
-            <a href="/cancellation">Cancellation Policy</a>
-          </div>
-          <div className="developer-credit">
-            <span>Developed by KA IT Solutions</span>
-          </div>
+        <p>&copy; {new Date().getFullYear()} Funtastico Beach Resort. All rights reserved.</p>
+        <div className="footer-legal">
+          <a href="/privacy">Privacy Policy</a>
+          <span className="separator">|</span>
+          <a href="/terms">Terms of Service</a>
+          <span className="separator">|</span>
+          <a href="/cancellation">Cancellation Policy</a>
         </div>
       </div>
     </footer>

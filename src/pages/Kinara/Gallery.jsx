@@ -229,107 +229,110 @@ export default function Gallery() {
     }
   };
 
+  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <div className="gallery-page" onKeyDown={handleKeyDown} tabIndex={0}>
-      <div className="gallery-container">
-        <header className="gallery-header">
-          <h1>GALLERY</h1>
-          
-          {/* Category Navigation */}
-          <nav className="gallery-nav">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`nav-btn ${activeCategory === category ? "active" : ""}`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </nav>
-        </header>
+    <Layout>
+      <div className="gallery-page" onKeyDown={handleKeyDown} tabIndex={0}>
+        <div className="gallery-container">
+          <header className="gallery-header">
+            <h1>GALLERY</h1>
+         
+            
+            {/* Category Navigation */}
+            <nav className="gallery-nav">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`nav-btn ${activeCategory === category ? "active" : ""}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </nav>
+          </header>
 
-        {/* Image Count */}
-        <div className="image-count">
-          Showing {currentImages.length} {activeCategory === "All" ? "images" : `${activeCategory.toLowerCase()} images`}
-        </div>
-
-        {/* Gallery Grid */}
-        {currentImages.length > 0 ? (
-          <div className="gallery-grid">
-            {currentImages.map((img, index) => (
-              <div 
-                className="gallery-item" 
-                key={img.id}
-                onClick={() => openCarousel(index)}
-              >
-                <img src={img.src} alt={img.alt} />
-                <div className="image-overlay">
-                  <span>{img.alt}</span>
-                </div>
-              </div>
-            ))}
+          {/* Image Count */}
+          <div className="image-count">
+            Showing {currentImages.length} {activeCategory === "All" ? "images" : `${activeCategory.toLowerCase()} images`}
           </div>
-        ) : (
-          <div className="no-images">
-            <p></p>
-          </div>
-        )}
 
-        {/* Carousel Modal */}
-        {isCarouselOpen && currentImages.length > 0 && (
-          <div className="carousel-modal" onClick={closeCarousel}>
-            <div className="carousel-content" onClick={(e) => e.stopPropagation()}>
-              
-              {/* Close Button */}
-              <button className="carousel-close" onClick={closeCarousel} aria-label="Close">
-                &times;
-              </button>
-
-              {/* Navigation Buttons */}
-              <button className="carousel-nav prev" onClick={prevImage} aria-label="Previous image">
-                ❮
-              </button>
-
-              {/* Main Image Display */}
-              <div className="carousel-image-container">
-                <img 
-                  src={currentImages[currentImageIndex].src} 
-                  alt={currentImages[currentImageIndex].alt} 
-                  className="carousel-main-image"
-                />
-                <div className="image-info">
-                  <h3>{currentImages[currentImageIndex].alt}</h3>
-                  <span>{activeCategory}</span>
-                </div>
-              </div>
-
-              <button className="carousel-nav next" onClick={nextImage} aria-label="Next image">
-                ❯
-              </button>
-
-              {/* Image Counter */}
-              <div className="image-counter">
-                {currentImageIndex + 1} / {currentImages.length}
-              </div>
-
-              {/* Thumbnail Navigation */}
-              <div className="carousel-thumbnails">
-                {currentImages.map((img, index) => (
-                  <div 
-                    key={img.id}
-                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => goToImage(index)}
-                  >
-                    <img src={img.src} alt={img.alt} />
+          {/* Gallery Grid */}
+          {currentImages.length > 0 ? (
+            <div className="gallery-grid">
+              {currentImages.map((img, index) => (
+                <div 
+                  className="gallery-item" 
+                  key={img.id}
+                  onClick={() => openCarousel(index)}
+                >
+                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  <div className="image-overlay">
+                    <span>{img.alt}</span>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-images">
+              <p>No images available for this category</p>
+            </div>
+          )}
+
+          {/* Carousel Modal */}
+          {isCarouselOpen && currentImages.length > 0 && (
+            <div className="carousel-modal" onClick={closeCarousel}>
+              <div className="carousel-content" onClick={(e) => e.stopPropagation()}>
+                
+                {/* Close Button */}
+                <button className="carousel-close" onClick={closeCarousel} aria-label="Close">
+                  &times;
+                </button>
+
+                {/* Navigation Buttons */}
+                <button className="carousel-nav prev" onClick={prevImage} aria-label="Previous image">
+                  ❮
+                </button>
+
+                {/* Main Image Display */}
+                <div className="carousel-image-container">
+                  <img 
+                    src={currentImages[currentImageIndex].src} 
+                    alt={currentImages[currentImageIndex].alt} 
+                    className="carousel-main-image"
+                  />
+                  <div className="image-info">
+                    <h3>{currentImages[currentImageIndex].alt}</h3>
+                    <span>{activeCategory}</span>
+                  </div>
+                </div>
+
+                <button className="carousel-nav next" onClick={nextImage} aria-label="Next image">
+                  ❯
+                </button>
+
+                {/* Image Counter */}
+                <div className="image-counter">
+                  {currentImageIndex + 1} / {currentImages.length}
+                </div>
+
+                {/* Thumbnail Navigation */}
+                <div className="carousel-thumbnails">
+                  {currentImages.map((img, index) => (
+                    <div 
+                      key={img.id}
+                      className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                      onClick={() => goToImage(index)}
+                    >
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-      
-      </div>
+    </Layout>
   );
 }

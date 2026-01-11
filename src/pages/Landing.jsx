@@ -39,7 +39,7 @@ const ImageCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       goToNext();
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [currentIndex]);

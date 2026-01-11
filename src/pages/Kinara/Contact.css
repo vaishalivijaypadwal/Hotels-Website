@@ -189,7 +189,7 @@ background: rgba(255, 192, 203, 0.596);
 .contact-form-section {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
+  border-radius: px;
   padding: 3rem 4rem;              /* T R B L */
   border: 1px solid rgba(255, 255, 255, 0.12);
   max-width: 900px;
@@ -236,7 +236,7 @@ background: rgba(255, 192, 203, 0.596);
 .form-group textarea {
   padding: 10px 16px;
   font-size: 14px;
-  border-radius: 8px;
+  border-radius: px;
   border: 1px solid #d1d5db;
   outline: none;
   transition: all 0.25s ease;
@@ -362,7 +362,7 @@ background: rgba(255, 192, 203, 0.596);
 }
 
 .footer-quick-links a {
-  color: #d1d5db;
+  color: white;
   font-weight: 400;        /* ❌ 400px → ✅ 400 */
   font-size: 20px;         /* increased font size */
   text-decoration: none;
@@ -371,7 +371,7 @@ background: rgba(255, 192, 203, 0.596);
 }
 
 .footer-quick-links a:hover {
-  color: #ffffff;
+ color: white;
 }
 
 
@@ -392,22 +392,5 @@ background: rgba(255, 192, 203, 0.596);
    font-weight: 400;
   color: white;
   line-height: 1.6;
-}
-
-/* ================= FOOTER BOTTOM ================= */
-.footer-bottom {
-  margin-top: 50px;
-  padding-top: 20px;
-  border-top: 1px solid white;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-legal a {
-  margin-left: 16px;
-  color:white;
-  text-decoration: none;
-  font-size: 16px;
 }
 

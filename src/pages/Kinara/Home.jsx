@@ -1,5 +1,6 @@
 // src/pages/Kinara/Home.jsx
 import React, { useState, useEffect } from "react";
+import Layout from '../../components/Layout';
 import { 
   FaWhatsapp, 
   FaPhoneAlt, 
@@ -42,17 +43,17 @@ export default function KinaraHome() {
     {
       id: 2,
       image: kinara2,
-     
+      
     },
     {
       id: 3,
       image: kinara3,
-      
+     
     },
     {
       id: 4,
       image: kinara4,
-     
+    
     },
     {
       id: 5,
@@ -109,7 +110,7 @@ export default function KinaraHome() {
   };
 
   const generateWhatsAppMessage = () => {
-    const message = `*New Booking Inquiry*%0A%0A` +
+    const message = `*New Booking Inquiry - Kinara Resort*%0A%0A` +
       `*Name:* ${formData.name}%0A` +
       `*Phone:* ${formData.phone}%0A` +
       `*Email:* ${formData.email}%0A` +
@@ -123,7 +124,7 @@ export default function KinaraHome() {
 
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
-    const phoneNumber = "919876543210"; // Replace with your number
+    const phoneNumber = "919665514055"; // Use actual Kinara number
     const message = generateWhatsAppMessage();
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     
@@ -140,314 +141,322 @@ export default function KinaraHome() {
   };
 
   const handleCallNow = () => {
-    window.location.href = "tel:+919876543210";
+    window.location.href = "tel:+919665514055";
   };
 
+  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <div className="kinara-home" tabIndex={0}>
-      {/* ================= HERO SECTION WITH CAROUSEL ================= */}
-      <section className="kinara-hero">
-        {/* ===== CAROUSEL CONTAINER ===== */}
-        <div className="carousel-container">
-          {/* ===== CAROUSEL SLIDES ===== */}
-          <div 
-            className="carousel-slides"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            role="listbox"
-            aria-label="Kinara Resort carousel"
-          >
-            {carouselImages.map((slide) => (
-              <div 
-                key={slide.id} 
-                className="carousel-slide"
-                style={{ backgroundImage: `url(${slide.image})` }}
-                role="option"
-                aria-label={`${slide.title}: ${slide.description}`}
-              >
-                <div className="slide-overlay">
-                  <div className="slide-content">
-                    <h2 className="slide-title">{slide.title}</h2>
-                    <p className="slide-description">{slide.description}</p>
+    <Layout>
+      <div className="kinara-home" tabIndex={0}>
+        {/* ================= HERO SECTION WITH CAROUSEL ================= */}
+        <section className="kinara-hero">
+          {/* ===== CAROUSEL CONTAINER ===== */}
+          <div className="carousel-container">
+            {/* ===== CAROUSEL SLIDES ===== */}
+            <div 
+              className="carousel-slides"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              role="listbox"
+              aria-label="Kinara Resort carousel"
+            >
+              {carouselImages.map((slide) => (
+                <div 
+                  key={slide.id} 
+                  className="carousel-slide"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                  role="option"
+                  aria-label={`${slide.title}: ${slide.description}`}
+                >
+                  <div className="slide-overlay">
+                    <div className="slide-content">
+                      <h2 className="slide-title">{slide.title}</h2>
+                      <p className="slide-description">{slide.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* ===== CAROUSEL CONTROLS ===== */}
-          <button 
-            className="carousel-btn prev-btn" 
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            ❮
-          </button>
-          <button 
-            className="carousel-btn next-btn" 
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            ❯
-          </button>
+            {/* ===== CAROUSEL CONTROLS ===== */}
+            <button 
+              className="carousel-btn prev-btn" 
+              onClick={prevSlide}
+              aria-label="Previous slide"
+            >
+              ❮
+            </button>
+            <button 
+              className="carousel-btn next-btn" 
+              onClick={nextSlide}
+              aria-label="Next slide"
+            >
+              ❯
+            </button>
 
-          {/* ===== CAROUSEL INDICATORS ===== */}
-          <div className="carousel-indicators" role="tablist">
-            {carouselImages.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-                aria-selected={index === currentSlide}
-                role="tab"
-              />
-            ))}
-          </div>
-
-          {/* ===== HERO CONTENT ===== */}
-          <div className="hero-content">
-            <h1>Welcome to Kinara Resort</h1>
-            <p>
-              Experience serene luxury surrounded by nature.  
-              Kinara Resort offers peaceful stays, modern comforts,  
-              and unforgettable moments by the coastline.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= ABOUT SECTION ================= */}
-      <section className="about-section">
-         <h2>About Us</h2>
-        <div className="about-container">
-          {/* LEFT IMAGE */}
-          <div className="about-image">
-            <img src={about1} alt="Kinara Resort" />
-          </div>
-
-          {/* RIGHT CONTENT */}
-          <div className="about-text">
-           
-            <p>
-              Nestled amidst serene natural beauty, Kinara Resort is a perfect
-              destination for travelers seeking peace, comfort, and luxury.
-              Designed to blend modern amenities with nature's charm, our resort
-              offers an unforgettable escape from everyday life.
-            </p>
-            <p>
-              Whether you are planning a family vacation, a romantic getaway,
-              or a relaxing weekend retreat, Kinara Resort provides spacious
-              accommodations, warm hospitality, and scenic surroundings to
-              make your stay truly special.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FACILITIES SECTION ================= */}
-      <section className="facilities-section">
-  <div className="section-header">
-    <h2>Facilities</h2>
-  </div>
-  <div className="facilities-grid">
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} /> {/* Blue */}
-      </div>
-      <h3>Free Wi-Fi</h3>
-     
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} /> {/* Red */}
-      </div>
-      <h3>Newspaper</h3>
-     
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} /> {/* Sky Blue */}
-      </div>
-      <h3>Air Conditioning</h3>
-      
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Amber */}
-      </div>
-      <h3>Housekeeping</h3>
-      
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaCar style={{ fontSize: '30px', color: '#10B981' }} /> {/* Emerald */}
-      </div>
-      <h3>Free Parking</h3>
-      
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} /> {/* Violet */}
-      </div>
-      <h3>Room Service</h3>
-     
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Yellow */}
-      </div>
-      <h3>Power Backup</h3>
-      
-    </div>
-    
-    <div className="facility-card">
-      <div className="facility-icon">
-        <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} /> {/* Indigo */}
-      </div>
-      <h3>Umbrellas</h3>
-     
-    </div>
-  </div>
-</section>
-
-      {/* ================= GALLERY SECTION ================= */}
-      <section className="gallery-section">
-        <h2>Gallery</h2>
-        <div className="gallery-grid">
-          <div className="gallery-item">
-            <img src={room7} alt="Luxury Room - Kinara Resort" />
-          </div>
-          <div className="gallery-item">
-            <img src={entrance} alt="Resort Entrance - Kinara Resort" />
-          </div>
-          <div className="gallery-item">
-            <img src={outdoor} alt="Outdoor View - Kinara Resort" />
-          </div>
-        </div>
-      </section>
-
-      {/* ================= CONTACT SECTION ================= */}
-      <section className="contact-section">
-        <h2>Contact & Inquiries</h2>
-        <div className="contact-container">
-          {/* Inquiry Form */}
-          <div className="inquiry-form-container">
-            <form onSubmit={handleWhatsAppSubmit} className="inquiry-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <label>
-                    <FaUser className="input-icon" /> Full Name 
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label>
-                    <FaPhoneAlt className="input-icon" /> Phone Number 
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Your WhatsApp number"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="form-group">
-                <label>
-                  <FaEnvelope className="input-icon" /> Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your email address"
+            {/* ===== CAROUSEL INDICATORS ===== */}
+            <div className="carousel-indicators" role="tablist">
+              {carouselImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  aria-selected={index === currentSlide}
+                  role="tab"
                 />
+              ))}
+            </div>
+
+            {/* ===== HERO CONTENT ===== */}
+            <div className="hero-content">
+              <h1>Welcome to Kinara Resort</h1>
+              <p>
+                Experience serene luxury surrounded by nature.  
+                Kinara Resort offers peaceful stays, modern comforts,  
+                and unforgettable moments by the coastline.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= ABOUT SECTION ================= */}
+        <section className="about-section">
+          <h2>About Us</h2>
+          <div className="about-container">
+            {/* LEFT IMAGE */}
+            <div className="about-image">
+              <img src={about1} alt="Kinara Resort" />
+            </div>
+
+            {/* RIGHT CONTENT */}
+            <div className="about-text">
+              <p>
+                Nestled amidst serene natural beauty, Kinara Resort is a perfect
+                destination for travelers seeking peace, comfort, and luxury.
+                Designed to blend modern amenities with nature's charm, our resort
+                offers an unforgettable escape from everyday life.
+              </p>
+              <p>
+                Whether you are planning a family vacation, a romantic getaway,
+                or a relaxing weekend retreat, Kinara Resort provides spacious
+                accommodations, warm hospitality, and scenic surroundings to
+                make your stay truly special.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= FACILITIES SECTION ================= */}
+        <section className="facilities-section">
+          <div className="section-header">
+            <h2>Facilities</h2>
+            
+          </div>
+          <div className="facilities-grid">
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} /> {/* Blue */}
               </div>
+              <h3>Free Wi-Fi</h3>
               
-              <div className="form-row">
-                <div className="form-group">
-                  <label>
-                    <FaCalendarAlt className="input-icon" /> Check-in Date 
-                  </label>
-                  <input
-                    type="date"
-                    name="checkIn"
-                    value={formData.checkIn}
-                    onChange={handleChange}
-                    required
-                  />
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} /> {/* Red */}
+              </div>
+              <h3>Newspaper</h3>
+              
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} /> {/* Sky Blue */}
+              </div>
+              <h3>Air Conditioning</h3>
+             
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Amber */}
+              </div>
+              <h3>Housekeeping</h3>
+              
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaCar style={{ fontSize: '30px', color: '#10B981' }} /> {/* Emerald */}
+              </div>
+              <h3>Free Parking</h3>
+              
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} /> {/* Violet */}
+              </div>
+              <h3>Room Service</h3>
+             
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Yellow */}
+              </div>
+              <h3>Power Backup</h3>
+             
+            </div>
+            
+            <div className="facility-card">
+              <div className="facility-icon">
+                <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} /> {/* Indigo */}
+              </div>
+              <h3>Umbrellas</h3>
+           
+            </div>
+          </div>
+        </section>
+
+        {/* ================= GALLERY SECTION ================= */}
+        <section className="gallery-section">
+          <h2>Gallery</h2>
+          
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <img src={room7} alt="Luxury Room - Kinara Resort" />
+              <div className="gallery-caption">Luxury Room</div>
+            </div>
+            <div className="gallery-item">
+              <img src={entrance} alt="Resort Entrance - Kinara Resort" />
+              <div className="gallery-caption">Main Entrance</div>
+            </div>
+            <div className="gallery-item">
+              <img src={outdoor} alt="Outdoor View - Kinara Resort" />
+              <div className="gallery-caption">Outdoor View</div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= CONTACT SECTION ================= */}
+        <section className="contact-section">
+          <h2>Contact & Inquiries</h2>
+          
+          <div className="contact-container">
+            {/* Inquiry Form */}
+            <div className="inquiry-form-container">
+              <form onSubmit={handleWhatsAppSubmit} className="inquiry-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>
+                      <FaUser className="input-icon" /> Full Name 
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>
+                      <FaPhoneAlt className="input-icon" /> Phone Number 
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Your WhatsApp number"
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
                   <label>
-                    <FaCalendarAlt className="input-icon" /> Check-out Date 
+                    <FaEnvelope className="input-icon" /> Email Address
                   </label>
                   <input
-                    type="date"
-                    name="checkOut"
-                    value={formData.checkOut}
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
-                    required
+                    placeholder="Your email address"
                   />
                 </div>
-              </div>
-              
-              <div className="form-group">
-                <label>
-                  <FaUsers className="input-icon" /> Number of Guests 
-                </label>
-                <select
-                  name="guests"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="1">1 Guest</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5">5 Guests</option>
-                  <option value="6">6 Guests</option>
-                  <option value="7">7+ Guests</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label>Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Room preferences, special requests, or questions..."
-                  rows="1"
-                ></textarea>
-              </div>
-              
-              <button type="submit" className="whatsapp-submit-btn">
-                <FaWhatsapp /> Send on WhatsApp
-              </button>
-            </form>
+                
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>
+                      <FaCalendarAlt className="input-icon" /> Check-in Date 
+                    </label>
+                    <input
+                      type="date"
+                      name="checkIn"
+                      value={formData.checkIn}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>
+                      <FaCalendarAlt className="input-icon" /> Check-out Date 
+                    </label>
+                    <input
+                      type="date"
+                      name="checkOut"
+                      value={formData.checkOut}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="form-group">
+                  <label>
+                    <FaUsers className="input-icon" /> Number of Guests 
+                  </label>
+                  <select
+                    name="guests"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5">5 Guests</option>
+                    <option value="6">6 Guests</option>
+                    <option value="7">7+ Guests</option>
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label>Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Room preferences, special requests, or questions..."
+                    rows="1"
+                  ></textarea>
+                </div>
+                
+                <button type="submit" className="whatsapp-submit-btn">
+                  <FaWhatsapp /> Send on WhatsApp
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Layout>
   );
 }

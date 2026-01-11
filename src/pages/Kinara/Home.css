@@ -454,12 +454,12 @@
 
 .inquiry-form-container {
   background: white;
-  padding: 40px;
+  padding: 60px;
   border-radius: px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   width: 100%;
   max-width: 600px;
-  min-height: 400px;
+  min-height: 350px;
 }
 
 .inquiry-form {
