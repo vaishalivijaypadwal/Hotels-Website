@@ -274,7 +274,7 @@ export default function Gallery() {
 
   // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout  resort="funtastico">
       <div className="gallery-page" onKeyDown={handleKeyDown} tabIndex={0}>
         <div className="gallery-container">
           <header className="gallery-header">

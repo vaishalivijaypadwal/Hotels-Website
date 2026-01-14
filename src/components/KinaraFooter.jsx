@@ -1,4 +1,4 @@
-// src/components/KinaraFooter.jsx
+// src/components/FuntasticoFooter.jsx
 import React from "react";
 import "./KinaraFooter.css";
 import { 
@@ -9,104 +9,115 @@ import {
   FaInstagram, 
   FaTwitter, 
   FaWhatsapp,
-  FaHotel,
-  FaBed,
-  FaSwimmingPool,
-  FaCar
+  FaUmbrellaBeach,
+  FaWater,
+  FaFish,
+  FaSwimmer
 } from "react-icons/fa";
 
 const KinaraFooter = () => {
+  // SocialIcons component for reuse
+  const SocialIcons = () => {
+    const socialLinks = [
+      { icon: <FaFacebookF />, url: "https://facebook.com/funtasticoresort", color: "#1877F2" },
+      { icon: <FaInstagram />, url: "https://instagram.com/funtasticoresort", color: "#E4405F" },
+      { icon: <FaTwitter />, url: "https://twitter.com/funtasticoresort", color: "#1DA1F2" },
+      { icon: <FaWhatsapp />, url: "https://wa.me/918956770162", color: "#25D366" }
+    ];
+
+    return (
+      <div className="social-icons">
+        {socialLinks.map((social, index) => (
+          <a
+            key={index}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+            style={{ color: social.color }}
+          >
+            {social.icon}
+          </a>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <footer className="kinara-footer">
-      <div className="footer-top">
-        <div className="footer-content">
-          {/* CONTACT INFO */}
-          <div className="footer-section contact-info">
+    <footer className="contact-footer">
+      {/* FOOTER SECTION WITH CONTACT INFO */}
+      <div className="footer-content">
+        {/* CONTACT INFO CARD */}
+        <div className="contact-info-card">
+          <div className="contact-left">
             <div className="resort-header">
-              <FaHotel className="resort-icon" />
-              <h3>Kinara Resort</h3>
+             
+              <h2>Contact Us</h2>
             </div>
-            <ul className="contact-list">
+
+            <ul className="contact-info-list">
               <li>
                 <FaEnvelope className="footer-icon" />
                 <a href="mailto:KinaraResort@gmail.com">KinaraResort@gmail.com</a>
               </li>
               <li>
                 <FaPhoneAlt className="footer-icon" />
-                <a href="tel:+919665514055">+91 9665514055</a>
+                <div className="phone-numbers">
+                  <a href="tel:+919665514055">+91 09665514055</a>
+                 
+                </div>
               </li>
               <li>
                 <FaMapMarkerAlt className="footer-icon" />
                 <span>Malvan-Tarkarli Road, Vayari, Bhutnath, Malvan, Maharashtra 416606</span>
               </li>
             </ul>
-          </div>
-
-          {/* QUICK LINKS */}
-          <div className="footer-section quick-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="/kinara">Home</a></li>
-              <li><a href="/kinara/about">About Us</a></li>
-              <li><a href="/kinara/gallery">Gallery</a></li>
-              <li><a href="/kinara/contact">Contact</a></li>
-              <li><a href="/kinara/booking">Book Now</a></li>
-            </ul>
-          </div>
-
-          {/* AMENITIES */}
-          <div className="footer-section amenities">
-            <h4>Our Amenities</h4>
-            <div className="amenities-list">
-              <div className="amenity-item">
-                <FaBed className="amenity-icon" />
-                <span>Luxury Rooms</span>
-              </div>
-              <div className="amenity-item">
-                <FaSwimmingPool className="amenity-icon" />
-                <span>Swimming Pool</span>
-              </div>
-              <div className="amenity-item">
-                <FaCar className="amenity-icon" />
-                <span>Free Parking</span>
-              </div>
-            </div>
-          </div>
-
-          {/* SOCIAL LINKS */}
-          <div className="footer-section social-links">
-            <h4>Connect With Us</h4>
-            <div className="social-icons">
-              <a href="https://facebook.com" className="social-icon facebook">
-                <FaFacebookF />
-              </a>
-              <a href="https://instagram.com" className="social-icon instagram">
-                <FaInstagram />
-              </a>
-              <a href="https://twitter.com" className="social-icon twitter">
-                <FaTwitter />
-              </a>
-              <a href="https://wa.me/919665514055" className="social-icon whatsapp">
-                <FaWhatsapp />
-              </a>
+            
+            <div className="social-section">
+              <h4>Connect With Us</h4>
+              <br />
+              <SocialIcons />
             </div>
           </div>
         </div>
-      </div>
+
+        {/* QUICK LINKS */}
+        <div className="footer-quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="/kinara">Home</a>
+            </li>
+            <li>
+              <a href="/kinara/about">About Us</a>
+            </li>
+            <li>
+              <a href="/kinara/gallery">Gallery</a>
+            </li>
+            <li>
+              <a href="/kinara/contact">Contact</a>
+            </li>
+            <li>
+              <a href="/kinara/booking">Book Now</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* DEVELOPER CREDIT */}
+        <div className="footer-newsletter">
+          <h3>Developed By</h3>
+          <p>KA IT Solutions</p>
+        </div>
+      </div> {/* Closing div for .footer-content */}
 
       <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <p>&copy; {new Date().getFullYear()} Kinara Resort. All rights reserved.</p>
-          <div className="footer-legal">
-            <a href="/privacy">Privacy Policy</a>
-            <span className="separator">|</span>
-            <a href="/terms">Terms of Service</a>
-            <span className="separator">|</span>
-            <a href="/cancellation">Cancellation Policy</a>
-          </div>
-          <div className="developer-credit">
-            <span>Developed by KA IT Solutions</span>
-          </div>
+        <p>&copy; {new Date().getFullYear()} Kinara Resort. All rights reserved.</p>
+        <div className="footer-legal">
+          <a href="/privacy">Privacy Policy</a>
+          <span className="separator">|</span>
+          <a href="/terms">Terms of Service</a>
+          <span className="separator">|</span>
+          <a href="/cancellation">Cancellation Policy</a>
         </div>
       </div>
     </footer>

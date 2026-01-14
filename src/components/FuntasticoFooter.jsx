@@ -63,7 +63,7 @@ const FuntasticoFooter = () => {
               <li>
                 <FaPhoneAlt className="footer-icon" />
                 <div className="phone-numbers">
-                  <a href="tel:+919665514055">+91 9665514055</a>
+                  <a href="tel:+919404050550">+91 9404050550</a>
                  
                 </div>
               </li>

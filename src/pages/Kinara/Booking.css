@@ -1,7 +1,7 @@
 /* ================= RESET ================= */
 * {
   margin: 0;
-  padding: 0;
+  padding: 40;
   box-sizing: border-box;
 }
 
@@ -9,16 +9,16 @@
 .booking-page {
   background: rgba(255, 192, 203, 0.596);
   min-height: 100vh;
-  padding: 0px 20px;
+  padding: 40px 60px;
   font-family: "Inter", sans-serif;
 }
 
 /* ================= CONTAINER ================= */
 .booking-container {
-  max-width: 1600px;
+  max-width: 1000px;
   margin: auto;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: px;
   padding: 10px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
 }

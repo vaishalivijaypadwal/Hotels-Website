@@ -30,7 +30,7 @@ const RESORT_DATA = {
       { path: "/funtastico/about", label: "About" },
       { path: "/funtastico/gallery", label: "Gallery" },
       { path: "/funtastico/contact", label: "Contact" },
-      { path: "/kinara/booking", label: "Booking" }
+      { path: "/funtastico/booking", label: "Booking" }
     ],
     showFooter: false
   }

@@ -1,21 +1,21 @@
 /* ================= FOOTER BASE ================= */
 .kinara-footer {
-  background: linear-gradient(180deg, hsla(229, 84%, 5%, 0.671), #020617);
+  background: linear-gradient(180deg, #020617, #020617);
   color: #e5e7eb;
   font-family: "Inter", "Segoe UI", sans-serif;
 }
 
 /* ================= TOP FOOTER ================= */
 .footer-top {
-  padding: 48px 6% 38px;
+  padding: 50px 6% 40px;
 }
 
 .footer-content {
-  max-width: 1500px;
+  max-width: 1300px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 34px;
+  gap: 36px;
 }
 
 /* ================= SECTIONS ================= */
@@ -36,7 +36,7 @@
 
 .resort-icon {
   font-size: 26px;
-  color: #fbbf24; /* warm resort accent */
+  color: #38bdf8;
 }
 
 /* ================= CONTACT INFO ================= */
@@ -59,12 +59,17 @@
 }
 
 .contact-list a:hover {
-  color: #fbbf24;
+  color: #38bdf8;
 }
 
 .footer-icon {
   margin-top: 3px;
-  color: #fbbf24;
+  color: #38bdf8;
+}
+
+.phone-separator {
+  margin: 0 6px;
+  color: #64748b;
 }
 
 /* ================= QUICK LINKS ================= */
@@ -83,17 +88,17 @@
 }
 
 .quick-links a:hover {
-  color: #fbbf24;
+  color: #38bdf8;
 }
 
-/* ================= AMENITIES ================= */
-.amenities-list {
+/* ================= ACTIVITIES ================= */
+.activities-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.amenity-item {
+.activity-item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -101,8 +106,8 @@
   color: #cbd5f5;
 }
 
-.amenity-icon {
-  color: #fde68a;
+.activity-icon {
+  color: #22d3ee;
   font-size: 16px;
 }
 
@@ -110,6 +115,7 @@
 .social-icons {
   display: flex;
   gap: 12px;
+  margin-bottom: 18px;
 }
 
 .social-icon {
@@ -134,6 +140,28 @@
 .social-icon.instagram:hover { background: #e4405f; }
 .social-icon.twitter:hover { background: #1da1f2; }
 .social-icon.whatsapp:hover { background: #25d366; }
+
+/* ================= BOOK NOW BUTTON ================= */
+.booking-cta {
+  margin-top: 10px;
+}
+
+.book-now-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.book-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+}
 
 /* ================= BOTTOM FOOTER ================= */
 .footer-bottom {
@@ -161,7 +189,7 @@
 }
 
 .footer-legal a:hover {
-  color: #fbbf24;
+  color: #38bdf8;
 }
 
 .separator {

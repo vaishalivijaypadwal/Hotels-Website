@@ -75,7 +75,7 @@ const ContactPage = () => {
 
   // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout resort="kinara">
       <div className="contact-page">
         {/* REACH SECTION */}
         <section className="reach-section">

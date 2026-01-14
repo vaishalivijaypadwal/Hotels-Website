@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import Layout from '../../components/Layout'; // ADD THIS IMPORT
+import { useState, useEffect, useRef } from "react"; // ADD useRef here
+import Layout from '../../components/Layout';
 import { 
   FaWhatsapp, 
   FaPhoneAlt, 
@@ -32,6 +32,8 @@ import outdoor11 from "../../gallery/outdoor11.jpg";
 
 export default function FantasticoHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true); // ADD THIS STATE
+  const autoPlayRef = useRef(null); // ADD THIS REF
   
   // Form state
   const [formData, setFormData] = useState({
@@ -54,7 +56,7 @@ export default function FantasticoHome() {
     {
       id: 2,
       image: funtastico2,
-      
+     
     },
     {
       id: 3,
@@ -64,12 +66,12 @@ export default function FantasticoHome() {
     {
       id: 4,
       image: funtastico4,
-     
+      
     },
     {
       id: 5,
       image: funtastico5,
-    
+      
     },
     {
       id: 6,
@@ -78,16 +80,33 @@ export default function FantasticoHome() {
     }
   ];
 
-  // Add keyboard navigation
+  // Auto-play functionality
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    };
+    if (!isAutoPlaying) return;
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+    autoPlayRef.current = setInterval(() => {
+      nextSlide();
+    }, 1500); // Change slide every 1.5 seconds
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [isAutoPlaying, currentSlide]);
+
+  // Pause auto-play on hover
+  const handleMouseEnter = () => {
+    setIsAutoPlaying(false);
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+  };
+
+  // Resume auto-play on mouse leave
+  const handleMouseLeave = () => {
+    setIsAutoPlaying(true);
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => 
@@ -105,7 +124,22 @@ export default function FantasticoHome() {
     setCurrentSlide(index);
   };
 
-  // Contact form handlers
+  // Add keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === ' ') {
+        // Space bar to toggle auto-play
+        e.preventDefault(); // Prevent page scroll
+        setIsAutoPlaying(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -145,14 +179,17 @@ export default function FantasticoHome() {
     });
   };
 
-  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout resort="funtastico">
       <div className="funtastico-home" tabIndex={0}>
         {/* ================= HERO SECTION WITH CAROUSEL ================= */}
         <section className="funtastico-hero">
           {/* ===== CAROUSEL CONTAINER ===== */}
-          <div className="carousel-container">
+          <div 
+            className="carousel-container"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* ===== CAROUSEL SLIDES ===== */}
             <div 
               className="carousel-slides"
@@ -192,6 +229,15 @@ export default function FantasticoHome() {
               aria-label="Next slide"
             >
               ❯
+            </button>
+
+            {/* ===== AUTO-PLAY TOGGLE BUTTON ===== */}
+            <button 
+              className="auto-play-toggle"
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              aria-label={isAutoPlaying ? "Pause carousel" : "Play carousel"}
+            >
+              {isAutoPlaying ? '⏸️ Pause' : '▶️ Play'}
             </button>
 
             {/* ===== CAROUSEL INDICATORS ===== */}
@@ -255,7 +301,6 @@ export default function FantasticoHome() {
         <section className="facilities-section">
           <div className="section-header">
             <h2>Facilities</h2>
-            
           </div>
           <div className="facilities-grid">
             <div className="facility-card">
@@ -263,7 +308,6 @@ export default function FantasticoHome() {
                 <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} />
               </div>
               <h3>Free Wi-Fi</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -271,7 +315,6 @@ export default function FantasticoHome() {
                 <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} />
               </div>
               <h3>Newspaper</h3>
-              
             </div>
             
             <div className="facility-card">
@@ -279,7 +322,6 @@ export default function FantasticoHome() {
                 <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} />
               </div>
               <h3>Air Conditioning</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -287,7 +329,6 @@ export default function FantasticoHome() {
                 <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} />
               </div>
               <h3>Housekeeping</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -295,7 +336,6 @@ export default function FantasticoHome() {
                 <FaCar style={{ fontSize: '30px', color: '#10B981' }} />
               </div>
               <h3>Free Parking</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -303,7 +343,6 @@ export default function FantasticoHome() {
                 <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} />
               </div>
               <h3>Room Service</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -311,7 +350,6 @@ export default function FantasticoHome() {
                 <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} />
               </div>
               <h3>Power Backup</h3>
-            
             </div>
             
             <div className="facility-card">
@@ -319,7 +357,6 @@ export default function FantasticoHome() {
                 <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} />
               </div>
               <h3>Umbrellas</h3>
-            
             </div>
           </div>
         </section>

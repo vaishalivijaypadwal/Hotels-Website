@@ -1,5 +1,5 @@
 // src/pages/Kinara/Home.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Layout from '../../components/Layout';
 import { 
   FaWhatsapp, 
@@ -32,6 +32,8 @@ import kinara5 from "../../images/kinara5.jpg";
 
 export default function KinaraHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const autoPlayRef = useRef(null);
   
   // Carousel images array
   const carouselImages = [
@@ -43,22 +45,23 @@ export default function KinaraHome() {
     {
       id: 2,
       image: kinara2,
+     
       
     },
     {
       id: 3,
       image: kinara3,
-     
+      
     },
     {
       id: 4,
       image: kinara4,
-    
+     
     },
     {
       id: 5,
       image: kinara5,
-     
+      
     }
   ];
 
@@ -73,16 +76,33 @@ export default function KinaraHome() {
     message: ''
   });
 
-  // Add keyboard navigation
+  // Auto-play functionality
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    };
+    if (!isAutoPlaying) return;
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+    autoPlayRef.current = setInterval(() => {
+      nextSlide();
+    }, 1500); // Change slide every 1.5 seconds
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [isAutoPlaying, currentSlide]); // Re-run when auto-play status or slide changes
+
+  // Pause auto-play on hover
+  const handleMouseEnter = () => {
+    setIsAutoPlaying(false);
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+  };
+
+  // Resume auto-play on mouse leave
+  const handleMouseLeave = () => {
+    setIsAutoPlaying(true);
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => 
@@ -100,7 +120,21 @@ export default function KinaraHome() {
     setCurrentSlide(index);
   };
 
-  // Contact form handlers
+  // Add keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === ' ') {
+        // Space bar to toggle auto-play
+        setIsAutoPlaying(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -144,14 +178,17 @@ export default function KinaraHome() {
     window.location.href = "tel:+919665514055";
   };
 
-  // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout resort="kinara">
       <div className="kinara-home" tabIndex={0}>
         {/* ================= HERO SECTION WITH CAROUSEL ================= */}
         <section className="kinara-hero">
           {/* ===== CAROUSEL CONTAINER ===== */}
-          <div className="carousel-container">
+          <div 
+            className="carousel-container"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* ===== CAROUSEL SLIDES ===== */}
             <div 
               className="carousel-slides"
@@ -191,6 +228,15 @@ export default function KinaraHome() {
               aria-label="Next slide"
             >
               ❯
+            </button>
+
+            {/* ===== AUTO-PLAY TOGGLE BUTTON ===== */}
+            <button 
+              className="auto-play-toggle"
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              aria-label={isAutoPlaying ? "Pause carousel" : "Play carousel"}
+            >
+              {isAutoPlaying ? '⏸️ Pause' : '▶️ Play'}
             </button>
 
             {/* ===== CAROUSEL INDICATORS ===== */}
@@ -250,71 +296,62 @@ export default function KinaraHome() {
         <section className="facilities-section">
           <div className="section-header">
             <h2>Facilities</h2>
-            
           </div>
           <div className="facilities-grid">
             <div className="facility-card">
               <div className="facility-icon">
-                <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} /> {/* Blue */}
+                <FaWifi style={{ fontSize: '30px', color: '#3B82F6' }} />
               </div>
               <h3>Free Wi-Fi</h3>
-              
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} /> {/* Red */}
+                <FaNewspaper style={{ fontSize: '30px', color: '#EF4444' }} />
               </div>
               <h3>Newspaper</h3>
-              
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} /> {/* Sky Blue */}
+                <FaSnowflake style={{ fontSize: '30px', color: '#0EA5E9' }} />
               </div>
               <h3>Air Conditioning</h3>
-             
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Amber */}
+                <FaBroom style={{ fontSize: '30px', color: '#F59E0B' }} />
               </div>
               <h3>Housekeeping</h3>
-              
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaCar style={{ fontSize: '30px', color: '#10B981' }} /> {/* Emerald */}
+                <FaCar style={{ fontSize: '30px', color: '#10B981' }} />
               </div>
               <h3>Free Parking</h3>
-              
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} /> {/* Violet */}
+                <FaConciergeBell style={{ fontSize: '30px', color: '#8B5CF6' }} />
               </div>
               <h3>Room Service</h3>
-             
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} /> {/* Yellow */}
+                <FaBolt style={{ fontSize: '30px', color: '#F59E0B' }} />
               </div>
               <h3>Power Backup</h3>
-             
             </div>
             
             <div className="facility-card">
               <div className="facility-icon">
-                <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} /> {/* Indigo */}
+                <FaUmbrella style={{ fontSize: '30px', color: '#6366F1' }} />
               </div>
               <h3>Umbrellas</h3>
-           
             </div>
           </div>
         </section>
@@ -322,7 +359,6 @@ export default function KinaraHome() {
         {/* ================= GALLERY SECTION ================= */}
         <section className="gallery-section">
           <h2>Gallery</h2>
-          
           <div className="gallery-grid">
             <div className="gallery-item">
               <img src={room7} alt="Luxury Room - Kinara Resort" />
@@ -342,7 +378,6 @@ export default function KinaraHome() {
         {/* ================= CONTACT SECTION ================= */}
         <section className="contact-section">
           <h2>Contact & Inquiries</h2>
-          
           <div className="contact-container">
             {/* Inquiry Form */}
             <div className="inquiry-form-container">

@@ -75,7 +75,7 @@ const ContactPage = () => {
 
   // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout resort="funtastico">
       <div className="contact-page">
         {/* REACH SECTION */}
         <section className="reach-section">
@@ -100,8 +100,8 @@ const ContactPage = () => {
                 <FaPhoneAlt className="icon" style={{ color: '#fff' }} />
               </div>
               <h3>Phone</h3>
-              <a href="tel:+9109665514055" className="contact-link">
-                +91 09665514055
+              <a href="tel:+919404050550" className="contact-link">
+                +91 9404050550
               </a>
               
             </div>

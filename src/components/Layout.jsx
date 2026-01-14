@@ -4,15 +4,16 @@ import KinaraFooter from './KinaraFooter';
 import FuntasticoFooter from './FuntasticoFooter';
 import './Layout.css';
 
-const Layout = ({ children, resort = 'funtastico' }) => {
+const Layout = ({ children,resort }) => {
   // Determine which footer to show based on resort
   const getFooter = () => {
-    switch(resort.toLowerCase()) {
+    switch(resort) {
       case 'kinara':
         return <KinaraFooter />;
       case 'funtastico':
-      default:
         return <FuntasticoFooter />;
+      default:
+        return null;
     }
   };
 

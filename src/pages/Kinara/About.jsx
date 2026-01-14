@@ -243,7 +243,7 @@ const CombinedFacilities = () => {
 
   // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    <Layout resort="kinara">
       <div className="about-page">
         {/* ================= ABOUT SECTION ================= */}
         <section className="about-section">

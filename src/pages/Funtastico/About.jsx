@@ -196,7 +196,7 @@ const CombinedFacilities = () => {
     {
       title: "Living Area",
       icon: <FaCouch style={{ color: "#8B5CF6" }} />,
-      description: "Spacious living spaces"
+      
     },
     {
       title: "Balcony",
@@ -272,7 +272,7 @@ const CombinedFacilities = () => {
 
   // WRAP EVERYTHING WITH LAYOUT COMPONENT
   return (
-    <Layout>
+    < Layout resort="funtastico">
       <div className="about-page">
         {/* ================= ABOUT SECTION ================= */}
         <section className="about-section">
@@ -323,7 +323,7 @@ const CombinedFacilities = () => {
 
             {/* RIGHT: Text */}
             <div className="facilities-content">
-              <h2 className="section-title">Room And Amenities</h2>
+              <h2 className="section-title">Room And Location</h2>
               <p className="section-description">
                 The property offers Non AC and AC Sea View Wooden Cottages.
                 Each room at the resort is furnished with a queen-size bed, toilet and bathroom, 
@@ -334,7 +334,6 @@ const CombinedFacilities = () => {
                 just outside the resort.
               </p>
 
-              <h2>Location And Surroundings</h2>
               <p className="section-description">
                 The nearest airport is Dabolim Airport which is 131 km away.
                 Property has pick-up and drop facilities.
