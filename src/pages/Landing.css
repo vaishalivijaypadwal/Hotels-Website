@@ -19,7 +19,7 @@
   position: relative;
   width: 100%;
   height: 100vh;                 /* 🔥 50% screen height */
-  max-height: 550px;            /* prevents too tall on big screens */
+  max-height: 700px;            /* prevents too tall on big screens */
   overflow: hidden;
   border-radius: 0px;
   margin-bottom: 40px;
