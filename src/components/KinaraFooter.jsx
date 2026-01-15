@@ -19,11 +19,23 @@ const KinaraFooter = () => {
   // SocialIcons component for reuse
   const SocialIcons = () => {
     const socialLinks = [
-      { icon: <FaFacebookF />, url: "https://facebook.com/funtasticoresort", color: "#1877F2" },
-      { icon: <FaInstagram />, url: "https://instagram.com/funtasticoresort", color: "#E4405F" },
-      { icon: <FaTwitter />, url: "https://twitter.com/funtasticoresort", color: "#1DA1F2" },
-      { icon: <FaWhatsapp />, url: "https://wa.me/918956770162", color: "#25D366" }
-    ];
+  {
+    icon: <FaFacebookF />,
+    url: "https://www.facebook.com/people/Kinara-Resort/100063919025800/",
+    color: "#1877F2"
+  },
+  {
+    icon: <FaInstagram />,
+    url: "https://www.instagram.com/kinara_hotel_tarkarli?igsh=MTA2czRjNjJnY280aQ==",
+    color: "#E4405F"
+  },
+  {
+    icon: <FaWhatsapp />,
+    url: "https://wa.me/919665514055",
+    color: "#25D366"
+  }
+];
+
 
     return (
       <div className="social-icons">
@@ -63,7 +75,7 @@ const KinaraFooter = () => {
               <li>
                 <FaPhoneAlt className="footer-icon" />
                 <div className="phone-numbers">
-                  <a href="tel:+919665514055">+91 09665514055</a>
+                  <a href="tel:+919665514055">+91 9665514055</a>
                  
                 </div>
               </li>
@@ -112,13 +124,7 @@ const KinaraFooter = () => {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Kinara Resort. All rights reserved.</p>
-        <div className="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
-          <span className="separator">|</span>
-          <a href="/terms">Terms of Service</a>
-          <span className="separator">|</span>
-          <a href="/cancellation">Cancellation Policy</a>
-        </div>
+        
       </div>
     </footer>
   );

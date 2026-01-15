@@ -18,12 +18,24 @@ import {
 const FuntasticoFooter = () => {
   // SocialIcons component for reuse
   const SocialIcons = () => {
-    const socialLinks = [
-      { icon: <FaFacebookF />, url: "https://facebook.com/funtasticoresort", color: "#1877F2" },
-      { icon: <FaInstagram />, url: "https://instagram.com/funtasticoresort", color: "#E4405F" },
-      { icon: <FaTwitter />, url: "https://twitter.com/funtasticoresort", color: "#1DA1F2" },
-      { icon: <FaWhatsapp />, url: "https://wa.me/918956770162", color: "#25D366" }
-    ];
+   const socialLinks = [
+  {
+    icon: <FaFacebookF />,
+    url: "https://share.google/EMhzenuoMTYbTznGA",
+    color: "#1877F2"
+  },
+  {
+    icon: <FaInstagram />,
+    url: "https://www.instagram.com/funtastico_beach_resort?igsh=b3N1bHk0bjhyZXU=",
+    color: "#E4405F"
+  },
+  {
+    icon: <FaWhatsapp />,
+    url: "https://wa.me/919404050550",
+    color: "#25D366"
+  }
+];
+
 
     return (
       <div className="social-icons">
@@ -58,7 +70,7 @@ const FuntasticoFooter = () => {
             <ul className="contact-info-list">
               <li>
                 <FaEnvelope className="footer-icon" />
-                <a href="mailto:FuntasticoResort@gmail.com">FuntasticoResort@gmail.com</a>
+                <a href="mailto:FuntasticowoodsResort@gmail.com">funtasticowoods@gmail.com</a>
               </li>
               <li>
                 <FaPhoneAlt className="footer-icon" />
@@ -112,13 +124,7 @@ const FuntasticoFooter = () => {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Funtastico Beach Resort. All rights reserved.</p>
-        <div className="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
-          <span className="separator">|</span>
-          <a href="/terms">Terms of Service</a>
-          <span className="separator">|</span>
-          <a href="/cancellation">Cancellation Policy</a>
-        </div>
+        
       </div>
     </footer>
   );
